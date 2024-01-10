@@ -1,6 +1,5 @@
 # 📖 Sobre o projeto
-O projeto consiste em um perfil onde o usuário controla suas atividades durante o dia e a noite, podendo adicioná-las e removê-las.
-
+O projeto consiste em um perfil onde o usuário controla suas atividades durante o dia e a noite, podendo adicioná-las e removê-las. Além disso, o usuário pode escolher o tema que acha mais confortável para utilizar.
 
 # 📱Layout 
 
