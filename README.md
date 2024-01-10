@@ -16,7 +16,7 @@ O projeto consiste em um perfil onde o usuário controla suas atividades durante
 
   - Tela com tema noite 
   
-v align="left" > 
+
 <img height="500" src="https://github.com/Adrianaramss/desafio-2/assets/111310311/88aefb62-776e-4e54-97cc-59024043b320"/>
 
 
@@ -38,7 +38,7 @@ v align="left" >
 ### Instalando
 ```bash
 # Clone repositório
-git clone https://github.com/Adrianaramss/teste---Saguitech.git
+git clone https://github.com/Adrianaramss/desafio-2.git
 
 # abra o terminal e execute o seguinte comando
 npm install -g http-server
