@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="light-theme.css" id="theme-stylesheet">
+  <script src="theme-switcher.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
+      display: flex;
+    }
+
+    #menu {
+      background-color: #FFFFFF;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center; 
+    }
+
+    #menu img {
+      width: 180px;
+      height: 180px;
+      padding: 20px;
+    }
+
+    #menu h2 {
+      margin-top: 10px;
+      padding: 20px;
+    }
+
+    #menu p {
+      margin-top: 5px;
+      color: #555;
+    }
+
+    #menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    #menu li {
+      margin-bottom: 10px;
+    }
+
+    #menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    #content {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center; 
+    }
+
+    #content h1 {
+      color: #000;
+      text-align: center; 
+      margin-top: 0;
+    }
+
+    #tables-container {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .task-table {
+      width: 48%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .task-table th, .task-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .task-table th {
+      background-color: #f2f2f2;
+    }
+
+   
+    button { 
+      cursor: pointer; 
+      
+    }
+    button.remover {
+      background-color: #ff0000; 
+      color: #fff; 
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+  #toggle-theme-button {
+  cursor: pointer;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3498db; 
+  color: #fff; 
+  margin-bottom: 20px; 
+  margin-left: 70px; 
+}
+
+  </style>
+</head>
+<body>
+
+  <button id="toggle-theme-button" class="alterartema">Clique aqui! tema Dia/Noite</button>
+  <br/>
+  <br/>
+  <main>
+    <div id="menu">
+      <img src="icones/usuario.png" alt="Ícone Padrão">
+      <h2>Adriana</h2>
+      <p>Sou apaixonada por praia e cachorros.</p>
+
+      <ul>
+        <li><a href="#">Link1</a></li>
+        <li><a href="#">Link2</a></li>
+        <li><a href="#">Link3</a></li>
+        <li><a href="#">Link4</a></li>
+      </ul>
+    </div>
+
+    <div id="content">
+      <h1>Lista de Tarefas</h1>
+
+      <input type="text" id="novaTarefa" placeholder="Digite a nova tarefa">
+
+      <button onclick="adicionarTarefa('dia')">Adicionar Tarefa (Dia)</button>
+      <button onclick="adicionarTarefa('noite')">Adicionar Tarefa (Noite)</button>
+
+      <div id="tables-container">
+        <table class="task-table" periodo="dia">
+          <caption>Dia</caption>
+          <thead>
+            <tr>
+              <th>Tarefa</th>
+              <th>Ação</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Passear com cachorro</td><td><button onclick="removerTarefa(this)"  class="remover"  >Remover</button></td></tr>
+            <tr><td>Estudar javascript</td><td><button onclick="removerTarefa(this)"  class="remover">Remover</button></td></tr>
+            <tr><td>Ir para academia</td><td><button onclick="removerTarefa(this)"  class="remover">Remover</button></td></tr>
+          </tbody>
+        </table>
+
+        <table class="task-table" periodo="noite">
+          <caption>Noite</caption>
+          <thead>
+            <tr>
+              <th>Tarefa</th>
+              <th>Ação</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ir para faculdade</td><td><button onclick="removerTarefa(this)"    class="remover">Remover</button></td></tr>
+            <tr><td>Assistir uma série</td><td><button onclick="removerTarefa(this)"  class="remover">Remover</button></td></tr>
+            <tr><td>Dormir</td><td><button onclick="removerTarefa(this)"   class="remover">Remover</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function adicionarTarefa(periodo) {
+      const novaTarefaInput = document.getElementById('novaTarefa');
+      const novaTarefa = novaTarefaInput.value;
+
+      if (novaTarefa.trim() !== '') {
+        const tabelaCorrespondente = document.querySelector(`.task-table[periodo="${periodo}"] tbody`);
+        const novaLinha = document.createElement('tr');
+        novaLinha.innerHTML = `<td>${novaTarefa}</td><td><button onclick="removerTarefa(this)"  class="remover"   >Remover</button></td>`;
+        tabelaCorrespondente.appendChild(novaLinha);
+
+        novaTarefaInput.value = '';
+      }
+    }
+
+    function removerTarefa(botaoRemover) {
+      const linhaRemover = botaoRemover.parentNode.parentNode;
+      linhaRemover.parentNode.removeChild(linhaRemover);
+    }
+  </script>
+</body>
+</html>
